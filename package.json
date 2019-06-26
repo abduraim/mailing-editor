@@ -1,0 +1,23 @@
+{
+  "name": "mailing-editor.local",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abduraim/mailing-editor.git"
+  },
+  "author": "abduraim.t <abduraim.t@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abduraim/mailing-editor/issues"
+  },
+  "homepage": "https://github.com/abduraim/mailing-editor#readme",
+  "devDependencies": {
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5"
+  }
+}
