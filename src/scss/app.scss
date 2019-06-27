@@ -1,4 +1,12 @@
+@import "tools-pallete";
+@import "view";
+
 body {
   margin: 0px;
-  background-color: greenyellow;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
 }
