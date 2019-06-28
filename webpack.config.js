@@ -1,7 +1,9 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
+
 
 module.exports = {
-    mode: 'development',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -10,6 +12,14 @@ module.exports = {
     devServer: {
         contentBase: './dist'
     },
+    plugins: [
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+        }),
+    ],
     module: {
         rules: [
             {
@@ -35,14 +45,19 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use:
-                    [
+                use: [
+                        // {
+                        //     loader: "style-loader",
+                        //     options:
+                        //         {
+                        //             sourceMap: true
+                        //         }
+                        // },
                         {
-                            loader: "style-loader",
-                            options:
-                                {
-                                    sourceMap: true
-                                }
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {
+                                hmr: process.env.NODE_ENV === 'development',
+                            },
                         },
                         {
                             loader: "css-loader",
@@ -57,8 +72,7 @@ module.exports = {
                                 {
                                     sourceMap: true
                                 }
-                        }
-                    ]
+                        }]
             }
         ]
     }
